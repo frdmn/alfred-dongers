@@ -8,7 +8,6 @@ $array_limit="50";
 // Find available pages
 $page_current = trim($html->find('.wp-pagenavi .current', 0)->plaintext);
 $page_last = trim($html->find('.wp-pagenavi .last', 0)->plaintext);
-$page_random = rand($page_current, $page_last);
 
 $html = file_get_html('http://dongerlist.com/page/'.$page_random);
 

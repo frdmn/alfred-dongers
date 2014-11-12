@@ -65,6 +65,7 @@ foreach ($categories as $category) {
   }
 }
 
-var_dump($dongers);
+// Encode as json
+echo json_encode($dongers);
 
 ?>

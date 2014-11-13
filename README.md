@@ -3,17 +3,13 @@ alfred-dongers (WIP)
 
 Alfred workflow to quickly browse through dongers (໒( ” •̀ ᗜ •́ ” )७ for example) via [dongerlist.com](http://dongerlist.com/).
 
-![](http://up.frd.mn/ul1QZ.png)
-
-![](http://up.frd.mn/GWMor.png)
-
-![](http://up.frd.mn/9ABg2.png)
-
 ## Usage
 
 Show _all_ available dongers:
 
-`dongers`  
+`dongers` 
+
+![](http://up.frd.mn/ul1QZ.png)
 
 ---
 
@@ -21,11 +17,15 @@ List available categories to filter:
 
 `dongers list`
 
+![](http://up.frd.mn/GWMor.png)
+
 ---
 
 Show dongers from specific category:
 
 `dongers <category>` 
+
+![](http://up.frd.mn/9ABg2.png)
 
 ## Installation
 

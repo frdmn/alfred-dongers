@@ -46,7 +46,7 @@ foreach ($categories as $category) {
       foreach($html->find('.list-1-item') as $donger) {
         // Create tiny array per each donger to save meta data like category
         $item['donger'] = $donger->find('.donger', 0)->plaintext;
-        $item['category'] = $category;
+        $item['category'] = strtolower($category);
         // Push to $dongers[] array
         array_push($dongers, $item);
       }
@@ -58,7 +58,7 @@ foreach ($categories as $category) {
     foreach($html->find('.list-1-item') as $donger) {
         // Create tiny array per each donger to save meta data like category
         $item['donger'] = $donger->find('.donger', 0)->plaintext;
-        $item['category'] = $category;
+        $item['category'] = strtolower($category);
         // Push to $dongers[] array
         array_push($dongers, $item);
     }

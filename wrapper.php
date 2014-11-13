@@ -20,7 +20,18 @@ function render_results($input_array){
   print $w->toXML($results);
 }
 
+
 // Read and store cached dongers
+$donger_cache = $_SERVER['HOME']."/.donger.cache";
+
+// Check if ~/donger.cache exists
+if (!file_exists($donger_cache)) {
+  $errors[] = 'Warning: no "~/donger.cache" file found!';
+  $errors[] = 'Run "donger update" at least once!';
+  render_results($errors);
+  exit;
+}
+
 $donger_raw = json_decode(file_get_contents($_SERVER['HOME']."/.donger.cache"));
 // Initalize some empty arrays
 $catgories = array();

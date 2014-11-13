@@ -11,6 +11,7 @@ function render_results($input_array){
   foreach ($input_array as $input_item) {
     $temp = array(
         'uid'          => $i,
+        'arg'          => $input_item,
         'title'        => $input_item,
     );
     array_push($results, $temp);
@@ -27,7 +28,7 @@ $donger_cache = $_SERVER['HOME']."/.donger.cache";
 // Check if ~/donger.cache exists
 if (!file_exists($donger_cache)) {
   $errors[] = 'Warning: no "~/donger.cache" file found!';
-  $errors[] = 'Run "donger update" at least once!';
+  $errors[] = 'Run "php parser/parser.php > ~/donger.cache" at least once!';
   render_results($errors);
   exit;
 }

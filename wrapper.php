@@ -27,13 +27,13 @@ $donger_cache = $_SERVER['HOME']."/.donger.cache";
 
 // Check if ~/donger.cache exists
 if (!file_exists($donger_cache)) {
-  $errors[] = 'Warning: no "~/donger.cache" file found!';
-  $errors[] = 'Run "php parser/parser.php > ~/donger.cache" at least once!';
+  $errors[] = 'Warning: no "~/.donger.cache" file found!';
+  $errors[] = 'Run "php parser/parser.php > ~/.donger.cache" at least once!';
   render_results($errors);
   exit;
 }
 
-$donger_raw = json_decode(file_get_contents($_SERVER['HOME']."/.donger.cache"));
+$donger_raw = json_decode(file_get_contents($donger_cache));
 // Initalize some empty arrays
 $catgories = array();
 $dongers = array();

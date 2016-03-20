@@ -37,7 +37,7 @@ foreach ($categories as $category) {
   $page = 1;
   $page_last = strip_tags($html->find('.wp-pagenavi .last', 0));
   // Check if pagination available
-  if ($page_current && $page_last) {
+  if ($page_last) {
     // While theres a new page available
     while ($page <= $page_last) {
     // Pagination found => multiple pages for that specific category

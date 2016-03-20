@@ -11,7 +11,7 @@ $categories = array();
  */
 
 // Initial request to parse available categories
-$html = file_get_html('http://dongerlist.com/category/happy');
+$html = file_get_html('http://dongerlist.com');
 
 // Store DOM in variable
 $parsed_categories = $html->find('a.list-2-anchor');
@@ -34,10 +34,8 @@ foreach ($categories as $category) {
   $html = file_get_html('http://dongerlist.com/category/'.$category);
 
   // Find available pages
-  $page_current = $html->find('.wp-pagenavi .current', 0);
-  $page_last = strip_tags($html->find('.wp-pagenavi .last', 0));
-  echo $page_last;
   $page = 1;
+  $page_last = strip_tags($html->find('.wp-pagenavi .last', 0));
   // Check if pagination available
   if ($page_current && $page_last) {
     // While theres a new page available

@@ -72,7 +72,7 @@ foreach ($categories as $category) {
     // Search each donger on the current page
     foreach($html->find('.list-1-item') as $donger) {
       // Create tiny array per each donger to save meta data like category
-      array_push($dongerSet, $donger->find('.donger', 0)->plaintext);
+      array_push($dongerSet, html_entity_decode($donger->find('.donger', 0)->plaintext));
     }
     // Continue with next page
     $page++;

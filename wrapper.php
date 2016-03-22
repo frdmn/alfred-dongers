@@ -21,6 +21,8 @@ function render_results($input_array){
   print $w->toXML($results);
 }
 
+// Store argument in variable
+$input = strtolower($argv[1]);
 
 // Find out which cache file should be used
 if (file_exists($_SERVER['HOME']."/.donger.cache")) {
@@ -36,22 +38,24 @@ if (!file_exists($donger_cache)) {
   exit;
 }
 
+// Decode JSON donger cache
 $donger_raw = json_decode(file_get_contents($donger_cache));
+
 // Initalize some empty arrays
 $catgories = array();
 $dongers = array();
 
 // Check for arguments (show only specified category or list categories)
-if (isset($argv[1])) {
+if (isset($input)) {
   // If argument is "list" => list categories
-  if ($argv[1] == "list") {
+  if ($input == "list") {
     foreach (array_keys(get_object_vars($donger_raw)) as $category) {
-      $catgories[] = $category;
+      $catgories[] = strtolower($category);
     }
     render_results(array_unique($catgories));
   // If argument is "category" => show dongers of specific category
   } else {
-    foreach ($donger_raw->$argv[1] as $donger) {
+    foreach ($donger_raw->$input as $donger) {
       $dongers[] = $donger;
     }
     render_results($dongers);

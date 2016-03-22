@@ -34,7 +34,7 @@ $parsed_categories = $html->find('a.list-2-anchor');
 foreach ($parsed_categories as $parsed_category) {
   // Push all elements except the "All" one to array
   if ($parsed_category->plaintext != "All") {
-    array_push($categories, $parsed_category->plaintext);
+    array_push($categories, strtolower($parsed_category->plaintext));
   }
 }
 

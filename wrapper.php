@@ -42,23 +42,23 @@ $dongers = array();
 if (isset($argv[1])) {
   // If argument is "list" => list categories
   if ($argv[1] == "list") {
-    foreach ($donger_raw as $donger) {
-      $catgories[] = $donger->category;
+    foreach (array_keys(get_object_vars($donger_raw)) as $category) {
+      $catgories[] = $category;
     }
     render_results(array_unique($catgories));
   // If argument is "category" => show dongers of specific category
   } else {
-    foreach ($donger_raw as $donger) {
-      if (strpos($donger->category,strtolower($argv[1])) === 0) {
-        $dongers[] = $donger->donger;
-      }
+    foreach ($donger_raw->$argv[1] as $donger) {
+      $dongers[] = $donger;
     }
     render_results($dongers);
   }
 } else {
   // No arguments => show all dongers
-  foreach ($donger_raw as $donger) {
-    $dongers[] = $donger->donger;
+  foreach ($donger_raw as $category) {
+    foreach ($category as $donger) {
+      $dongers[] = $donger;
+    }
   }
   render_results($dongers);
 }

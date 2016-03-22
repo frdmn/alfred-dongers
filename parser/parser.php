@@ -45,6 +45,10 @@ foreach ($parsed_categories as $parsed_category) {
 // For each available category
 foreach ($categories as $category) {
   debug('Starting to parse category "'. $category."\"\r\n");
+
+  // Create empty array to store dongers for current categorie
+  $dongerSet = array();
+
   // Parse available pages for specific cateogory
   $html = file_get_html('http://dongerlist.com/category/'.$category);
 
@@ -68,14 +72,14 @@ foreach ($categories as $category) {
     // Search each donger on the current page
     foreach($html->find('.list-1-item') as $donger) {
       // Create tiny array per each donger to save meta data like category
-      $item['donger'] = $donger->find('.donger', 0)->plaintext;
-      $item['category'] = strtolower($category);
-      // Push to $dongers[] array
-      array_push($dongers, $item);
+      array_push($dongerSet, $donger->find('.donger', 0)->plaintext);
     }
     // Continue with next page
     $page++;
   }
+
+  // Push category set into $dongers array
+  $dongers[$category] = $dongerSet;
 }
 
 // Encode as json

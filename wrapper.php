@@ -25,15 +25,15 @@ function render_results($input_array){
 $input = strtolower($argv[1]);
 
 // Find out which cache file should be used
-if (file_exists($_SERVER['HOME']."/.donger.cache")) {
-  $donger_cache = $_SERVER['HOME']."/.donger.cache";
+if (file_exists($_SERVER['HOME']."/.alfred-dongers.cache")) {
+  $donger_cache = $_SERVER['HOME']."/.alfred-dongers.cache";
 } else {
-  $donger_cache = ".donger.cache";
+  $donger_cache = ".alfred-dongers.cache";
 }
 
-// Check if ~/donger.cache exists
+// Check if ~/alfred-dongers.cache exists
 if (!file_exists($donger_cache)) {
-  $errors[] = 'Warning: no ".donger.cache" file found!';
+  $errors[] = 'Warning: no ".alfred-dongers.cache" file found!';
   render_results($errors);
   exit;
 }

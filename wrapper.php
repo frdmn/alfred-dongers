@@ -49,7 +49,7 @@ if (isset($argv[1])) {
   // If argument is "category" => show dongers of specific category
   } else {
     foreach ($donger_raw as $donger) {
-      if (strtolower($argv[1]) == $donger->category) {
+      if (strpos($donger->category,strtolower($argv[1])) === 0) {
         $dongers[] = $donger->donger;
       }
     }

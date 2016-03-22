@@ -22,13 +22,16 @@ function render_results($input_array){
 }
 
 
-// Read and store cached dongers
-$donger_cache = $_SERVER['HOME']."/.donger.cache";
+// Find out which cache file should be used
+if (file_exists($_SERVER['HOME']."/.donger.cache")) {
+  $donger_cache = $_SERVER['HOME']."/.donger.cache";
+} else {
+  $donger_cache = ".donger.cache";
+}
 
 // Check if ~/donger.cache exists
 if (!file_exists($donger_cache)) {
-  $errors[] = 'Warning: no "~/.donger.cache" file found!';
-  $errors[] = 'Run "php parser/parser.php > ~/.donger.cache" at least once!';
+  $errors[] = 'Warning: no ".donger.cache" file found!';
   render_results($errors);
   exit;
 }

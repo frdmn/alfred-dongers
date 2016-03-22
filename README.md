@@ -38,4 +38,4 @@ Show dongers from specific category:
 
 ## License
 
-[WTFPL](LICENSE)
+[MIT](LICENSE)
